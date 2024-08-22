@@ -1,31 +1,66 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TP07_PreguntadORT.Models;
-
-namespace TP07_PreguntadORT.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
-    public IActionResult Index()
+    public IActionResult index()
     {
         return View();
     }
-
-    public IActionResult Privacy()
+    public IActionResult ConfigurarJuego()
     {
-        return View();
+        Juego.InicializarJuego();
+
+        ViewBag.Categorias = Juego.ObtenerCategorias();
+        ViewBag.Dificultades = Juego.ObtenerDificultades();
+
+        return View("ConfigurarJuego");
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Comenzar(string username, int dificultad, int categoria)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        Juego.CargarPartida(username, dificultad, categoria);
+
+        if (Juego.ObtenerProximaPregunta() != null)
+        {
+            return RedirectToAction("Jugar");
+        }
+        else
+        {
+            return RedirectToAction("ConfigurarJuego");
+        }
+    }
+
+    public IActionResult Jugar()
+    {
+        Pregunta? preguntaActual = Juego.ObtenerProximaPregunta();
+
+        if (preguntaActual == null)
+        {
+            return View("Fin");
+        }
+        else
+        {
+            ViewBag.Pregunta = preguntaActual;
+            ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
+            return View("Juego");
+        }
+    }
+
+    [HttpPost]
+    public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
+    {
+        // Invoca al método VerificarRespuesta de la clase Juego
+        bool esCorrecta = Juego.VerificarRespuesta(idPregunta, idRespuesta);
+
+        // Obtener la respuesta correcta para enviar como información opcional
+        Respuesta? respuestaCorrecta = BD.ObtenerRespuestasPorPregunta(idPregunta).FirstOrDefault(r => r.Correcta);
+
+        // Enviar la información a la vista mediante ViewBag
+        ViewBag.EsCorrecta = esCorrecta;
+        ViewBag.RespuestaCorrecta = respuestaCorrecta;
+
+        // Retorna la vista Respuesta
+        return View("Respuesta");
     }
 }
