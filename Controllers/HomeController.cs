@@ -4,7 +4,6 @@ using System.Linq;
 public class HomeController : Controller
 {
 
-//asfsdgasdgfasdgfasdfs<dfsd
     public IActionResult index()
     {
         return View();
@@ -65,4 +64,13 @@ public class HomeController : Controller
         // Retorna la vista Respuesta
         return View("Respuesta");
     }
+
+    // aaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaaa
+    // aaaaaaaaaaaaaaa
 }
