@@ -1,0 +1,25 @@
+@{
+    ViewBag.Title = "Resultado - PreguntadORT";
+    bool esCorrecta = ViewBag.EsCorrecta; // Indica si la respuesta fue correcta
+    Respuesta respuestaCorrecta = ViewBag.RespuestaCorrecta; // La respuesta correcta (si la respuesta fue incorrecta)
+}
+
+<div class="result @(esCorrecta ? "correct" : "incorrect")">
+    @if (esCorrecta)
+    {
+        <p>¡Respuesta Correcta!</p>
+    }
+    else
+    {
+        <p>¡Respuesta Incorrecta!</p>
+    }
+</div>
+
+@if (!esCorrecta)
+{
+    <div class="correct-answer">
+        La respuesta correcta era: <strong>@respuestaCorrecta.Contenido</strong>
+    </div>
+}
+
+<a href="@Url.Action("Jugar", "Home")" class="button">Siguiente Pregunta</a>
