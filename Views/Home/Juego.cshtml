@@ -1,0 +1,35 @@
+@{
+    ViewBag.Title = "Juego - PreguntadORT";
+    string username = "Usuario"; 
+    int puntajeActual = 100; 
+    Pregunta pregunta = ViewBag.Pregunta; 
+    List<Respuesta> respuestas = ViewBag.Respuestas; 
+}
+
+<div id="header">
+    <h2>@username - Puntaje: @puntajeActual</h2>
+</div>
+
+<div class="question-container">
+    <h3>Pregunta @ViewBag.NumeroPregunta: @pregunta.Enunciado</h3>
+    @if (!string.IsNullOrEmpty(pregunta.Foto))
+    {
+        <img src="~/images/@pregunta.Foto" alt="Imagen de la pregunta" />
+    }
+</div>
+
+<form asp-action="VerificarRespuesta" method="post">
+    <input type="hidden" name="idPregunta" value="@pregunta.IdPregunta" />
+    <div class="response-container">
+        @for (int i = 0; i < respuestas.Count; i++)
+        {
+            <button type="submit" name="idRespuesta" value="@respuestas[i].IdRespuesta">
+                @if (!string.IsNullOrEmpty(respuestas[i].Foto))
+                {
+                    <img src="~/images/@respuestas[i].Foto" alt="Imagen de la respuesta" />
+                }
+                @respuestas[i].Contenido
+            </button>
+        }
+    </div>
+</form>

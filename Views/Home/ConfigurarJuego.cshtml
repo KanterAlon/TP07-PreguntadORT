@@ -1,0 +1,33 @@
+@{
+    ViewBag.Title = "Configurar Juego - PreguntadORT";
+    List<Dificultad> dificultades = ViewBag.Dificultades; // Lista de dificultades
+    List<Categoria> categorias = ViewBag.Categorias; // Lista de categorías
+}
+
+<h2>Configurar Juego</h2>
+
+<form asp-action="Comenzar" method="get">
+
+    <label for="username">Nombre de Usuario:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label>Dificultad:</label>
+    <div class="radio-group">
+        <label><input type="radio" name="dificultad" value="-1" required /> Todas</label>
+        @foreach (var dificultad in dificultades)
+        {
+            <label><input type="radio" name="dificultad" value="@dificultad.IdDificultad" required /> @dificultad.Nombre</label>
+        }
+    </div>
+
+    <label>Categoría:</label>
+    <div class="radio-group">
+        <label><input type="radio" name="categoria" value="-1" required /> Todas</label>
+        @foreach (var categoria in categorias)
+        {
+            <label><input type="radio" name="categoria" value="@categoria.IdCategoria" required /> @categoria.Nombre</label>
+        }
+    </div>
+
+    <button type="submit">Jugar</button>
+</form>

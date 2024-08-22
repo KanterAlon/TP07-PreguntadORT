@@ -64,13 +64,4 @@ public class HomeController : Controller
         // Retorna la vista Respuesta
         return View("Respuesta");
     }
-
-    // aaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaaa
-    // aaaaaaaaaaaaaaa
 }

@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 public class Juego
 {
     // Atributos privados
-    private static string? username;
-    private static int puntajeActual;
-    private static int cantidadPreguntasCorrectas;
-    private static Pregunta? preguntaActual;
+    private static string username = string.Empty;
+    private static int puntajeActual = 0;
+    private static int cantidadPreguntasCorrectas = 0;
+    private static List<Pregunta> preguntas = new List<Pregunta>(); // Almacena las preguntas disponibles
+    private static Pregunta preguntaActual = null; // La pregunta actual
 
     // Métodos públicos
 
@@ -19,6 +19,7 @@ public class Juego
         username = string.Empty;
         puntajeActual = 0;
         cantidadPreguntasCorrectas = 0;
+        preguntas.Clear(); // Limpia la lista de preguntas para empezar de nuevo
         preguntaActual = null;
     }
 
@@ -38,18 +39,18 @@ public class Juego
     public static void CargarPartida(string user, int dificultad, int categoria)
     {
         username = user;
-        // Asigna la primera pregunta de la partida
-        preguntaActual = BD.ObtenerPreguntas(dificultad, categoria).FirstOrDefault();
+        preguntas = BD.ObtenerPreguntas(dificultad, categoria); // Carga todas las preguntas disponibles según la configuración
+        preguntaActual = ObtenerProximaPregunta(); // Asigna la primera pregunta
     }
 
-    // Retorna la pregunta actual, o una nueva si ya se respondió la actual
-    public static Pregunta? ObtenerProximaPregunta()
+    // Retorna la próxima pregunta disponible, o null si no hay más preguntas
+    public static Pregunta ObtenerProximaPregunta()
     {
-        if (preguntaActual != null)
+        if (preguntas.Count > 0)
         {
-            Pregunta temp = preguntaActual;
-            preguntaActual = null; // Marcar como respondida
-            return temp;
+            preguntaActual = preguntas.FirstOrDefault();
+            preguntas.Remove(preguntaActual); // Remueve la pregunta de la lista para que no se repita
+            return preguntaActual;
         }
 
         return null; // No más preguntas
@@ -64,17 +65,32 @@ public class Juego
     // Verifica si la respuesta es correcta, y actualiza el puntaje y la cantidad de preguntas correctas
     public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
     {
-        Respuesta? respuesta = BD.ObtenerRespuestaPorId(idRespuesta);
+        Respuesta respuesta = BD.ObtenerRespuestaPorId(idRespuesta);
 
         if (respuesta != null && respuesta.Correcta && respuesta.IdPregunta == idPregunta)
         {
             // Incrementar puntaje y cantidad de preguntas correctas
             puntajeActual += 10; // Puedes ajustar la cantidad de puntos según tus necesidades
             cantidadPreguntasCorrectas++;
-            preguntaActual = null; // Marcar la pregunta como respondida
             return true;
         }
 
         return false;
+    }
+
+    // Métodos adicionales para acceder a la información del juego
+    public static int ObtenerPuntajeActual()
+    {
+        return puntajeActual;
+    }
+
+    public static string ObtenerUsername()
+    {
+        return username;
+    }
+
+    public static int ObtenerCantidadPreguntasCorrectas()
+    {
+        return cantidadPreguntasCorrectas;
     }
 }
