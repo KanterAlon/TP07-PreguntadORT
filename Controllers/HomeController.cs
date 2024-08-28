@@ -33,20 +33,24 @@ public class HomeController : Controller
     }
 
     public IActionResult Jugar()
-    {
-        Pregunta? preguntaActual = Juego.ObtenerProximaPregunta();
+{
+    Pregunta? preguntaActual = Juego.ObtenerProximaPregunta();
 
-        if (preguntaActual == null)
-        {
-            return View("Fin");
-        }
-        else
-        {
-            ViewBag.Pregunta = preguntaActual;
-            ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
-            return View("Juego");
-        }
+    if (preguntaActual == null)
+    {
+        ViewBag.PuntajeFinal = Juego.ObtenerPuntajeActual();
+        return View("Fin"); 
     }
+    else
+    {
+        ViewBag.Username = Juego.ObtenerUsername(); // Asumiendo que tienes un método para obtener el username
+        ViewBag.PuntajeActual = Juego.ObtenerPuntajeActual(); // Asumiendo que tienes un método para obtener el puntaje
+        //ViewBag.NumeroPregunta = Juego.ObtenerNumeroPregunta(); // Asumiendo que tienes un método para obtener el número de la pregunta
+        ViewBag.Pregunta = preguntaActual;
+        ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
+        return View("Juego");
+    }
+}
 
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)

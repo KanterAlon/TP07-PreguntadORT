@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP07-PreguntadORT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9987434e5fb21783fbad11cfd0875fb92fa0f7c5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6daff6e41708b7061fa07497ed458572af31915c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP07-PreguntadORT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP07-PreguntadORT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
