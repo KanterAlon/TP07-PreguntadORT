@@ -10,11 +10,14 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 main {
   flex: 1;
   padding: 20px;
+  width: 100%;
+  max-width: 800px;
 }
 
 /* Header and Footer */
@@ -30,101 +33,11 @@ footer p {
   margin: 0;
 }
 
-/* Buttons */
-
-.button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #45a049;
-}
-
-/* JUEGO */
-
-#header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#header h2 {
-  margin: 0;
-  font-size: 24px;
-}
-
-#header p {
-  margin: 5px 0;
-}
-
-.question-container {
-  margin-bottom: 20px;
-}
-
-.question-container img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 15px;
-  border-radius: 10px;
-}
-
-.response-container {
-  margin-bottom: 30px;
-}
-
-.response-container button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.response-container button:hover {
-  background-color: #0056b3;
-}
-
-.response-container img {
-  max-width: 100px;
-  height: auto;
-  vertical-align: middle;
-  margin-right: 10px;
-  border-radius: 5px;
-}
-
-#submit-btn {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#submit-btn:hover {
-  background-color: #218838;
-}
-
-/* CONFIGURAR JUEGO */
+/* Form Styling for Configurar Juego */
 
 h2 {
   text-align: center;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
@@ -132,16 +45,19 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 label {
-  margin: 10px 0 5px 0;
+  margin: 10px 0 5px;
   font-weight: bold;
+  font-size: 16px;
 }
 
-select, input[type="radio"], input[type="text"] {
-  margin-bottom: 20px;
-  padding: 8px;
+input[type="text"],
+input[type="radio"] {
+  margin-bottom: 15px;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   width: 100%;
@@ -151,75 +67,57 @@ select, input[type="radio"], input[type="text"] {
 .radio-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 300px;
 }
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radio-group input {
+  margin-right: 10px;
+}
+
+/* Button Styling */
 
 button {
   background-color: #28a745;
   color: white;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  text-transform: uppercase;
 }
 
 button:hover {
   background-color: #218838;
 }
 
-/* FIN */
+/* Consistent Button Styles */
 
-h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 24px;
-  margin-bottom: 30px;
-}
-
-/* RESPUESTA */
-
-.result {
-  font-size: 36px;
-  font-weight: bold;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-}
-
-.correct {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.incorrect {
-  background-color: #f44336;
-  color: white;
-}
-
-.correct-answer {
-  font-size: 24px;
-  color: #f44336;
-  margin-bottom: 30px;
-}
-
-/* Repeated Button Styling (Ensures Consistency Across the Site) */
-
-.button, .response-container button, #submit-btn {
+.button,
+.response-container button,
+#submit-btn {
   font-family: inherit;
-  text-transform: uppercase;
   transition: background-color 0.3s ease;
 }
 
-.button:hover, .response-container button:hover, #submit-btn:hover {
-  background-color: #0056b3;
+.button:hover,
+.response-container button:hover,
+#submit-btn:hover {
+  background-color: #218838;
 }
 
-/* Additional Styling for Images */
+/* Image Styling */
 
 img {
   max-width: 100%;
