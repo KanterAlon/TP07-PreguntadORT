@@ -1,9 +1,9 @@
 @{
     ViewBag.Title = "Juego - PreguntadORT";
-    string username = "Usuario"; 
-    int puntajeActual = 100; 
-    Pregunta pregunta = ViewBag.Pregunta; 
-    List<Respuesta> respuestas = ViewBag.Respuestas; 
+    string username = ViewBag.Username; // Ahora obtenemos el username del ViewBag
+    int puntajeActual = ViewBag.PuntajeActual; // También el puntaje actual del ViewBag
+    Pregunta pregunta = ViewBag.Pregunta;
+    List<Respuesta> respuestas = ViewBag.Respuestas;
 }
 
 <div id="header">
@@ -11,7 +11,7 @@
 </div>
 
 <div class="question-container">
-    <h3>Pregunta @ViewBag.NumeroPregunta: @pregunta.Enunciado</h3>
+    <h3>Pregunta: @pregunta.Enunciado</h3>
     @if (!string.IsNullOrEmpty(pregunta.Foto))
     {
         <img src="~/images/@pregunta.Foto" alt="Imagen de la pregunta" />
