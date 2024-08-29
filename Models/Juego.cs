@@ -43,18 +43,25 @@ public class Juego
         preguntaActual = ObtenerProximaPregunta(); // Asigna la primera pregunta
     }
 
-    // Retorna la próxima pregunta disponible, o null si no hay más preguntas
+    // Retorna la próxima pregunta disponible, o null si no hay más preguntas// Retorna la próxima pregunta disponible, o null si no hay más preguntas
     public static Pregunta ObtenerProximaPregunta()
     {
-        if (preguntas.Count > 0)
+        if (preguntaActual == null && preguntas.Count > 0)
         {
             preguntaActual = preguntas.FirstOrDefault();
             preguntas.Remove(preguntaActual); // Remueve la pregunta de la lista para que no se repita
-            return preguntaActual;
         }
 
-        return null; // No más preguntas
+        return preguntaActual; // Retorna la pregunta actual o null si ya no hay preguntas
     }
+
+// Método para avanzar a la siguiente pregunta
+public static void AvanzarAPreguntaSiguiente()
+{
+    preguntaActual = null; // Resetea la pregunta actual
+    ObtenerProximaPregunta(); // Asigna la siguiente pregunta
+}
+
 
     // Retorna una lista con todas las respuestas relacionadas a la pregunta enviada por parámetro
     public static List<Respuesta> ObtenerProximasRespuestas(int idPregunta)

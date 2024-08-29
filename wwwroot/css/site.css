@@ -19,10 +19,33 @@
 
 /* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* ---------------------------------- Variables de Colores ---------------------------------- */
+:root {
+  --color-rosa: #EE36A2;
+  --color-blanco: #F6F6F6;
+  --color-verde: #79C76E;
+  --color-fondo: var(--color-blanco);
+  --color-texto: var(--color-verde);
+  --color-acento: var(--color-rosa);
+  --color-boton: var(--color-verde);
+  --color-boton-hover: var(--color-rosa);
+  --color-correcto-bg: var(--color-verde);
+  --color-correcto-border: var(--color-verde);
+  --color-correcto-texto: white;
+  --color-incorrecto-bg: var(--color-rosa);
+  --color-incorrecto-border: var(--color-rosa);
+  --color-incorrecto-texto: white;
+  --color-respuesta: var(--color-texto);
+}
+
+/* ---------------------------------- General Styles ---------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html, body {
   height: 100%;
   margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-fondo);
   font-family: 'Poppins', sans-serif;
   background-color: var(--color-fondo);
 }
@@ -33,18 +56,24 @@ body {
 }
 
 /* Layout and Main Content */
+/* ---------------------------------- Layout and Main Content ---------------------------------- */
 main {
   flex: 1;
   padding: 20px;
   width: 100%;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Header and Footer */
+/* ---------------------------------- Header and Footer ---------------------------------- */
 header, footer {
   background-color: var(--color-blanco);
+  background-color: var(--color-blanco);
   color: white;
+  padding: 0px;
   padding: 0px;
   text-align: center;
   width: 100%;
@@ -68,8 +97,33 @@ header, footer {
 .footer-section h4 {
   font-size: 18px;
   margin-bottom: 15px;
+  width: 100%;
 }
 
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--color-texto);
+  color: white;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  font-size: 14px;
 .footer-section p,
 .footer-section ul,
 .footer-section li {
@@ -168,8 +222,100 @@ header, footer {
 }
 
 /* Form Styling */
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: var(--color-acento);
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--color-texto);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-acento);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo img {
+  width: 200px;
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-acento);
+}
+
+/* ---------------------------------- Form Styling ---------------------------------- */
 h2 {
   text-align: center;
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: var(--color-texto);
   font-size: 32px;
   margin-bottom: 25px;
   color: var(--color-texto);
@@ -187,14 +333,21 @@ label {
   font-weight: bold;
   font-size: 18px;
   color: var(--color-texto);
+  font-size: 18px;
+  color: var(--color-texto);
 }
 
+input[type="text"] {
 input[type="text"] {
   margin-bottom: 15px;
   padding: 12px 15px;
   border-radius: 8px;
+  padding: 12px 15px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   width: 100%;
+  max-width: 350px;
+  font-size: 16px;
   max-width: 350px;
   font-size: 16px;
 }
@@ -204,6 +357,7 @@ input[type="text"] {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  max-width: 350px;
   max-width: 350px;
 }
 
@@ -216,39 +370,55 @@ input[type="text"] {
 .radio-group input {
   margin-right: 10px;
   accent-color: var(--color-texto);
+  accent-color: var(--color-texto);
 }
 
 /* Button Styling */
 .button {
   background-color: var(--color-boton);
+.button {
+  background-color: var(--color-boton);
   color: white;
   padding: 12px 25px;
+  padding: 12px 25px;
   border: none;
+  border-radius: 8px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
   width: 100%;
   max-width: 350px;
+  max-width: 350px;
   text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
   font-weight: 600;
   text-decoration: none;
 }
 
 .button:hover {
   background-color: var(--color-boton-hover);
+.button:hover {
+  background-color: var(--color-boton-hover);
 }
 
 .button, 
 .response-container button, 
+.button, 
+.response-container button, 
 #submit-btn {
+  font-family: 'Poppins', sans-serif;
   font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease;
 }
 
 .button:hover, 
 .response-container button:hover, 
+.button:hover, 
+.response-container button:hover, 
 #submit-btn:hover {
+  background-color: var(--color-boton-hover);
   background-color: var(--color-boton-hover);
 }
 
@@ -257,8 +427,64 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  border-radius: 8px;
   display: block;
   margin: 0 auto;
+}
+
+/* Result Message Styles */
+.result.correct {
+  background-color: var(--color-correcto-bg);
+  border-color: var(--color-correcto-border);
+  color: var(--color-correcto-texto);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.result.incorrect {
+  background-color: var(--color-incorrecto-bg);
+  border-color: var(--color-incorrecto-border);
+  color: var(--color-incorrecto-texto);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.correct-answer {
+  margin-top: 15px;
+  font-size: 18px;
+  color: var(--color-respuesta);
+  text-align: center;
+}
+
+.correct-answer strong {
+  color: var(--color-boton);
+}
+
+/* Question and Response Styles */
+.question-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.response-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: var(--color-texto);
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.response-container button img {
+  margin-right: 10px;
+  border-radius: 4px;
 }
 
 /* Result Message Styles */

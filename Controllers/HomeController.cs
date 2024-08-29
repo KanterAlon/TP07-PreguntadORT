@@ -43,14 +43,15 @@ public class HomeController : Controller
     }
     else
     {
-        ViewBag.Username = Juego.ObtenerUsername(); // Asumiendo que tienes un método para obtener el username
-        ViewBag.PuntajeActual = Juego.ObtenerPuntajeActual(); // Asumiendo que tienes un método para obtener el puntaje
-        //ViewBag.NumeroPregunta = Juego.ObtenerNumeroPregunta(); // Asumiendo que tienes un método para obtener el número de la pregunta
+        ViewBag.Username = Juego.ObtenerUsername(); 
+        ViewBag.PuntajeActual = Juego.ObtenerPuntajeActual(); 
         ViewBag.Pregunta = preguntaActual;
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
+        Juego.AvanzarAPreguntaSiguiente(); // Avanza a la siguiente pregunta después de mostrar la actual
         return View("Juego");
     }
 }
+
 
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
