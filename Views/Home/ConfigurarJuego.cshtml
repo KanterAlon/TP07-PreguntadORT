@@ -13,7 +13,6 @@
 
     <label>Dificultad:</label>
     <div class="radio-group">
-        <label><input type="radio" name="dificultad" value="-1" required /> Todas</label>
         @foreach (var dificultad in dificultades)
         {
             <label><input type="radio" name="dificultad" value="@dificultad.IdDificultad" required /> @dificultad.Nombre</label>

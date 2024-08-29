@@ -1,4 +1,4 @@
-/* Variables de Colores */
+/* ---------------------------------- Variables de Colores ---------------------------------- */
 :root {
   --color-rosa: #EE36A2;
   --color-blanco: #F6F6F6;
@@ -17,7 +17,7 @@
   --color-respuesta: var(--color-texto);
 }
 
-/* General Styles */
+/* ---------------------------------- General Styles ---------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html, body {
@@ -32,7 +32,7 @@ body {
   flex-direction: column;
 }
 
-/* Layout and Main Content */
+/* ---------------------------------- Layout and Main Content ---------------------------------- */
 main {
   flex: 1;
   padding: 20px;
@@ -41,7 +41,7 @@ main {
   align-items: center;
 }
 
-/* Header and Footer */
+/* ---------------------------------- Header and Footer ---------------------------------- */
 header, footer {
   background-color: var(--color-blanco);
   color: white;
@@ -146,10 +146,6 @@ header, footer {
   transition: transform 0.3s ease;
 }
 
-.logo img:hover {
-  transform: scale(1.1);
-}
-
 .nav-links {
   list-style: none;
   display: flex;
@@ -167,7 +163,7 @@ header, footer {
   color: var(--color-acento);
 }
 
-/* Form Styling */
+/* ---------------------------------- Form Styling ---------------------------------- */
 h2 {
   text-align: center;
   font-size: 32px;

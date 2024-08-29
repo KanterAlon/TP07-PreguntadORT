@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EcSK4njaEkpduB3xvU/6DOB4rf8HNeywCssRj76QzM8=",
+  "Hash": "R4PmUUYKuBDc6G40+aDf1l/3J1u5ytzL+94+dArgGPQ=",
   "Source": "TP07-PreguntadORT",
   "BasePath": "_content/TP07-PreguntadORT",
   "Mode": "Default",
@@ -93,12 +93,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png",
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\1 transparente.png",
       "SourceId": "TP07-PreguntadORT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
       "BasePath": "_content/TP07-PreguntadORT",
-      "RelativePath": "Imagenes/Logo/Logo PreguntadOrt Fondo Blanco.png",
+      "RelativePath": "Imagenes/Logo PreguntadOrt/1 transparente.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,15 +109,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png"
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\1 transparente.png"
     },
     {
-      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png",
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\1.png",
       "SourceId": "TP07-PreguntadORT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
       "BasePath": "_content/TP07-PreguntadORT",
-      "RelativePath": "Imagenes/Logo/Logo PreguntadOrt Fondo Transparente.png",
+      "RelativePath": "Imagenes/Logo PreguntadOrt/1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,7 +128,45 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png"
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\1.png"
+    },
+    {
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\2 transparente.png",
+      "SourceId": "TP07-PreguntadORT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
+      "BasePath": "_content/TP07-PreguntadORT",
+      "RelativePath": "Imagenes/Logo PreguntadOrt/2 transparente.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\2 transparente.png"
+    },
+    {
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\2.png",
+      "SourceId": "TP07-PreguntadORT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
+      "BasePath": "_content/TP07-PreguntadORT",
+      "RelativePath": "Imagenes/Logo PreguntadOrt/2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\2.png"
     },
     {
       "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\js\\site.js",
