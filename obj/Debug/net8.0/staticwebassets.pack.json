@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\TP07-PreguntadORT.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png",
+      "PackagePath": "staticwebassets\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png"
+    },
+    {
+      "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png",
+      "PackagePath": "staticwebassets\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png"
+    },
+    {
       "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

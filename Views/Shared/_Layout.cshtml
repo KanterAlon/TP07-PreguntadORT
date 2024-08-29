@@ -13,18 +13,53 @@
     <header>
         <nav class="navbar">
             <a href="@Url.Action("Index", "Home")" class="logo">
-                <img src="/img/logo.png" alt="Preguntados Logo">
+                <img src="\Imagenes\Logo PreguntadOrt\2 transparente.png" alt="Preguntados Logo">
             </a>
             <ul class="nav-links">
                 
             </ul>
         </nav>
     </header>
+
     <main>
         @RenderBody()
     </main>
+
     <footer>
-        <p>&copy; @DateTime.Now.Year - JJOO</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>PreguntadOrt es un proyecto escolar desarrollado por alumnos de 4IC de la Escuela ORT Argentina, sede Almagro, en la orientación Informática. Es un juego de preguntas y respuestas diseñado para desafiar tus conocimientos en diversas categorías.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#how-to-play">Cómo Jugar</a></li>
+                    <li><a href="#categories">Categorías</a></li>
+                    <li><a href="#leaderboard">Tabla de Posiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>Email: <a href="mailto:support@preguntadort.com">support@preguntadort.com</a></p>
+                <p>Teléfono: +54 (11) 1234-5678</p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#"><img src="path/to/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="path/to/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="path/to/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="path/to/youtube-icon.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> PreguntadOrt. Todos los derechos reservados.</p>
+            <p>Proyecto desarrollado por Agustín De Marco, Alon Kanter, y Felipe Otero para la orientación Informática de 4IC en la Escuela ORT Argentina, sede Almagro.</p>
+            <p><a href="#">Política de Privacidad</a> | <a href="#">Términos del Servicio</a></p>
+        </div>
     </footer>
 
     <script src="~/js/site.js"></script>
