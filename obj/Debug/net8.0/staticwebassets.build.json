@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "R4PmUUYKuBDc6G40+aDf1l/3J1u5ytzL+94+dArgGPQ=",
+=======
+  "Hash": "EcSK4njaEkpduB3xvU/6DOB4rf8HNeywCssRj76QzM8=",
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
   "Source": "TP07-PreguntadORT",
   "BasePath": "_content/TP07-PreguntadORT",
   "Mode": "Default",
@@ -93,12 +97,20 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\1 transparente.png",
+=======
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png",
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
       "SourceId": "TP07-PreguntadORT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
       "BasePath": "_content/TP07-PreguntadORT",
+<<<<<<< HEAD
       "RelativePath": "Imagenes/Logo PreguntadOrt/1 transparente.png",
+=======
+      "RelativePath": "Imagenes/Logo/Logo PreguntadOrt Fondo Blanco.png",
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,15 +121,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
+<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\1 transparente.png"
     },
     {
       "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\1.png",
+=======
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png"
+    },
+    {
+      "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png",
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
       "SourceId": "TP07-PreguntadORT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\",
       "BasePath": "_content/TP07-PreguntadORT",
+<<<<<<< HEAD
       "RelativePath": "Imagenes/Logo PreguntadOrt/1.png",
+=======
+      "RelativePath": "Imagenes/Logo/Logo PreguntadOrt Fondo Transparente.png",
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,6 +151,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
+<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\1.png"
     },
     {
@@ -167,6 +191,9 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Imagenes\\Logo PreguntadOrt\\2.png"
+=======
+      "OriginalItemSpec": "wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png"
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
     },
     {
       "Identity": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\js\\site.js",

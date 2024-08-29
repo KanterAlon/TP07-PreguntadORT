@@ -5,6 +5,7 @@
       "PackagePath": "staticwebassets\\TP07-PreguntadORT.bundle.scp.css"
     },
     {
+<<<<<<< HEAD
       "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\1 transparente.png",
       "PackagePath": "staticwebassets\\Imagenes\\Logo PreguntadOrt\\1 transparente.png"
     },
@@ -19,6 +20,14 @@
     {
       "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo PreguntadOrt\\2.png",
       "PackagePath": "staticwebassets\\Imagenes\\Logo PreguntadOrt\\2.png"
+=======
+      "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png",
+      "PackagePath": "staticwebassets\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Blanco.png"
+    },
+    {
+      "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png",
+      "PackagePath": "staticwebassets\\Imagenes\\Logo\\Logo PreguntadOrt Fondo Transparente.png"
+>>>>>>> 2d78d1c26f26da3df8759c11f476d89bad0ea795
     },
     {
       "Id": "C:\\Users\\95320323\\Downloads\\TP07-PreguntadORT\\wwwroot\\css\\site.css",
