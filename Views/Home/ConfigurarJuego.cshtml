@@ -21,7 +21,6 @@
 
     <label>Categoría:</label>
     <div class="radio-group">
-        <label><input type="radio" name="categoria" value="-1" required /> Todas</label>
         @foreach (var categoria in categorias)
         {
             <label><input type="radio" name="categoria" value="@categoria.IdCategoria" required /> @categoria.Nombre</label>
