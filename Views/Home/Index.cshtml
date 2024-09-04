@@ -2,4 +2,22 @@
     ViewBag.Title = "Inicio - PreguntadORT";
 }
 
-<a href="@Url.Action("ConfigurarJuego", "Home")" class="button">Configurar Juego</a>
+<section class="inicio" id="inicio">
+    
+    <div class="inicio-video">
+      <div id="player"></div>
+    </div>
+
+    <div class="inicio-overlay"></div>
+
+    <div class="inicio-inner">
+      <h1 id="texto">PreguntadOrt</h1>
+      <h3>Inventore rem fugiat porro nesciunt eos error vitae ipsum sequi, molestias, ut delectus expedita. Reiciendis, non.</h3>
+
+      <div class="colaboraciones">
+        <a class="boton b1" href="@Url.Action("ConfigurarJuego", "Home")"><h2>Configurar Juego</h3></a>
+      </div>
+    </div>
+
+    <img class="arco" src="img/arco.svg" alt="">
+</section>
