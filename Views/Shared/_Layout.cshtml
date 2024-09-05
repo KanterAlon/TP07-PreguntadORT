@@ -65,5 +65,64 @@
     <script src="~/js/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    // Función para cargar el reproductor de YouTube
+    function onYouTubeIframeAPIReady() {
+    new YT.Player('player', {
+        height: '1080',
+        width: '1920',
+        videoId: 'PHe0bXAIuk0', 
+        playerVars: {
+        autoplay: 1,
+        controls: 0,     
+        mute: 1,
+        loop: 1,
+        playlist: 'PHe0bXAIuk0',
+        modestbranding: 1,   
+        disablekb: 1,       
+        start: 23           
+        },
+        events: {
+        onReady: onPlayerReady
+        }
+    });
+    }
+    
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+  </script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      activarAnimaciones('card'); //donde dice card, es donde se ingresa el ID del elemento con animacion
+      activarAnimaciones('p1'); 
+      activarAnimaciones('p2'); 
+      activarAnimaciones('p3'); 
+      activarAnimaciones('t1'); 
+      activarAnimaciones('t2'); 
+      activarAnimaciones('t3'); 
+      activarAnimaciones('boton'); 
+      activarAnimaciones('parrafo');                
+  });
+  </script>
+
+  <script type="text/javascript">
+    var i, text;
+    i=0;
+    text = "PREGUNTADORT";
+
+    function typing() {
+
+      if (i<text.length) {
+        document.getElementById("texto").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing,200);
+      }
+    }
+    
+    typing();
+  </script>
 </body>
 </html>
