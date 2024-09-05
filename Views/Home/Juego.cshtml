@@ -6,34 +6,28 @@
     List<Respuesta> respuestas = ViewBag.Respuestas;
 }
 
-<section class="seccion-interna">
-
+<section class="seccion-interna juego">
     <div id="header">
-        <h2>@username - Puntaje: @puntajeActual</h2>
+        <h2>@ViewBag.Username - Puntaje: @ViewBag.PuntajeActual</h2>
     </div>
 
     <div class="question-container">
-        <h3>Pregunta: @pregunta.Enunciado</h3>
-        @if (!string.IsNullOrEmpty(pregunta.Foto))
+        <h3>@ViewBag.Pregunta.Enunciado</h3>
+        @if (!string.IsNullOrEmpty(@ViewBag.Pregunta.Foto))
         {
-            <img src="~/images/@pregunta.Foto" alt="Imagen de la pregunta" />
+            <img src="~/images/@ViewBag.Pregunta.Foto" alt="Imagen de la pregunta" class="imagen-pregunta"/>
         }
     </div>
 
     <form asp-action="VerificarRespuesta" method="post">
-        <input type="hidden" name="idPregunta" value="@pregunta.IdPregunta" />
+        <input type="hidden" name="idPregunta" value="@ViewBag.Pregunta.IdPregunta" />
         <div class="response-container">
-            @for (int i = 0; i < respuestas.Count; i++)
+            @foreach (var respuesta in @ViewBag.Respuestas)
             {
-                <button type="submit" name="idRespuesta" value="@respuestas[i].IdRespuesta">
-                    @if (!string.IsNullOrEmpty(respuestas[i].Foto))
-                    {
-                        <img src="~/images/@respuestas[i].Foto" alt="Imagen de la respuesta" />
-                    }
-                    @respuestas[i].Contenido
+                <button type="submit" name="idRespuesta" value="@respuesta.IdRespuesta" class="btn-respuesta">
+                    <span>@respuesta.Contenido</span>
                 </button>
             }
         </div>
     </form>
-
 </section>

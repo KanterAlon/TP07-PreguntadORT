@@ -3,19 +3,8 @@
   --color-oliva: #8C9A6D;
   --color-blanco-humo: #F5F5F5;
   --color-gris-claro: #C0C0C0;
-  --color-rojo-granate: #B04A47;
-  --color-fondo: var(--color-blanco-humo);
-  --color-texto: var(--color-oliva);
-  --color-acento: var(--color-rojo-granate);
-  --color-boton: var(--color-oliva);
-  --color-boton-hover: var(--color-rojo-granate);
-  --color-correcto-bg: var(--color-oliva);
-  --color-correcto-border: var(--color-oliva);
-  --color-correcto-texto: white;
-  --color-incorrecto-bg: var(--color-rojo-granate);
-  --color-incorrecto-border: var(--color-rojo-granate);
-  --color-incorrecto-texto: white;
-  --color-respuesta: var(--color-texto);
+  --color-rojo-granate: #B04A47;  
+  --color-azul-acero: #708090;  
 }
 
 /* ---------------------------------- General Styles ---------------------------------- */
@@ -26,7 +15,7 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: var(--color-fondo);
+  background-color: var(--color-blanco-humo);
 }
 
 body {
@@ -47,12 +36,16 @@ h1 {
 
 h2 {
   font-weight: 600;
+  color: var(--color-azul-acero);
 }
 
 h3 {
   font-weight: 500;
+  color: var(--color-oliva);
 }
-/* ---------------------------------- Layout and Main Content ---------------------------------- */
+
+/* ---------------------------------- Layout ---------------------------------- */
+
 main {
   flex: 1;
   padding: 0;
@@ -62,8 +55,45 @@ main {
   background-color: var(--color-blanco-humo);
 }
 
+/* ---------------------------------- Index ---------------------------------- */
+
 .seccion-interna {
-  padding-block: 4rem;
+  padding-block: 6rem;
+}
+
+/* Button Styling */
+
+.button {
+  background-color: var(--color-azul-acero);
+  color: white;
+  padding: 20px 80px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  max-width: 350px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: var(--color-rojo-granate);
+}
+
+.button, 
+.response-container button, 
+#submit-btn {
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover, 
+.response-container button:hover, 
+#submit-btn:hover {
+  background-color: var(--color-rojo-granate);
 }
 
 .inicio {
@@ -74,7 +104,7 @@ main {
   max-height: 1080px;
   min-height: 500px;
   position: relative;
-  background-color: #000;
+  background-color: var(--color-gris-claro);
 }
 
 .inicio .arco{
@@ -105,7 +135,7 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  background: #000000;
+  background: var(--color-azul-acero);
   z-index: 1;
   opacity: .55;
 }
@@ -126,7 +156,7 @@ main {
 .inicio-inner h1 {
   font-size: 3.5rem;
   width: 95%;
-  color: #FFFFFF;
+  color: var(--color-blanco-humo);
   line-height: 3.8rem;
 }
 
@@ -134,7 +164,7 @@ main {
   font-size: 1.2rem;
   width: 87%;
   line-height: 1.5rem;
-  color: #FFFFFF;
+  color: var(--color-blanco-humo);
   transform: translate( 0 , 800px);
   opacity: 0;
   animation: aparecerAbajo 1.5s ease-out forwards;
@@ -175,8 +205,8 @@ main {
   }
 }
 
-
 /* ---------------------------------- Header and Footer ---------------------------------- */
+
 header, footer {
   color: white;
   padding: 0px;
@@ -203,7 +233,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: var(--color-texto);
+  background-color: var(--color-oliva);
   color: white;
   flex-wrap: wrap;
 }
@@ -243,7 +273,7 @@ header {
 }
 
 .footer-section ul li a:hover {
-  color: var(--color-acento);
+  color: var(--color-rojo-granate);
 }
 
 .social-links {
@@ -264,7 +294,7 @@ header {
 .footer-bottom {
   text-align: center;
   padding: 15px;
-  background-color: var(--color-texto);
+  background-color: var(--color-oliva);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -280,12 +310,11 @@ header {
 }
 
 .footer-bottom a:hover {
-  color: var(--color-acento);
+  color: var(--color-rojo-granate);
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -308,15 +337,15 @@ header {
 }
 
 .nav-links a:hover {
-  color: var(--color-acento);
+  color: var(--color-rojo-granate);
 }
 
-/* ---------------------------------- Form Styling ---------------------------------- */
+/* ---------------------------------- Configuración de Juego ---------------------------------- */
 h2 {
   text-align: center;
   font-size: 32px;
   margin-bottom: 25px;
-  color: var(--color-texto);
+  color: var(--color-azul-acero);
 }
 
 form {
@@ -330,70 +359,77 @@ label {
   margin: 10px 0 5px;
   font-weight: bold;
   font-size: 18px;
-  color: var(--color-texto);
+  color: var(--color-oliva);
 }
 
 input[type="text"] {
   margin-bottom: 15px;
   padding: 12px 15px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-gris-claro);
   width: 100%;
   max-width: 350px;
   font-size: 16px;
 }
 
-.radio-group {
+.input-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 350px;
-}
-
-.radio-group label {
-  display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.radio-group input {
-  margin-right: 10px;
-  accent-color: var(--color-texto);
+.contenedor-cards-elegibles {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  width: 70%;
+  padding-inline: 1rem;
 }
 
-/* Button Styling */
-.button {
-  background-color: var(--color-boton);
+.card-boton {
+  flex: 1;
+  display: block;
+  width: 33%;
+  background-color: var(--color-gris-claro);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card-boton:hover {
+  transform: scale(1.05);
+  background-color: var(--color-blanco-humo);
+}
+
+.card-boton.selected {
+  border: 2px solid var(--color-oliva);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content h4 {
+  font-size: 1.25rem;
+  color: var(--color-oliva);
+}
+
+/* Botón de Comenzar */
+.btn-jugar {
+  background-color: var(--color-azul-acero);
   color: white;
-  padding: 20px 80px;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 8px;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s ease;
-  width: fit-content;
-  max-width: 350px;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-decoration: none;
+  margin-top: 2rem;
 }
 
-.button:hover {
-  background-color: var(--color-boton-hover);
-}
-
-.button, 
-.response-container button, 
-#submit-btn {
-  font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover, 
-.response-container button:hover, 
-#submit-btn:hover {
-  background-color: var(--color-boton-hover);
+.btn-jugar:hover {
+  background-color: var(--color-rojo-granate);
 }
 
 /* Image Styling */
@@ -405,20 +441,22 @@ img {
   margin: 0 auto;
 }
 
+/* ---------------------------------- Respuesta ---------------------------------- */
+
 /* Result Message Styles */
 .result.correct {
-  background-color: var(--color-correcto-bg);
-  border-color: var(--color-correcto-border);
-  color: var(--color-correcto-texto);
+  background-color: var(--color-oliva);
+  border-color: var(--color-oliva);
+  color: var(--color-blanco-humo);
   padding: 15px;
   border-radius: 8px;
   text-align: center;
 }
 
 .result.incorrect {
-  background-color: var(--color-incorrecto-bg);
-  border-color: var(--color-incorrecto-border);
-  color: var(--color-incorrecto-texto);
+  background-color: var(--color-rojo-granate);
+  border-color: var(--color-rojo-granate);
+  color: var(--color-blanco-humo);
   padding: 15px;
   border-radius: 8px;
   text-align: center;
@@ -427,12 +465,12 @@ img {
 .correct-answer {
   margin-top: 15px;
   font-size: 18px;
-  color: var(--color-respuesta);
+  color: var(--color-oliva);
   text-align: center;
 }
 
 .correct-answer strong {
-  color: var(--color-boton);
+  color: var(--color-azul-acero);
 }
 
 /* Question and Response Styles */
@@ -448,7 +486,7 @@ img {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 8px;
-  background-color: var(--color-texto);
+  background-color: var(--color-azul-acero);
   color: white;
   font-size: 16px;
   width: 100%;

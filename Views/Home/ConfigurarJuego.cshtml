@@ -1,33 +1,71 @@
-@{
-    ViewBag.Title = "Configurar Juego - PreguntadORT";
-    List<Dificultad> dificultades = ViewBag.Dificultades; // Lista de dificultades
-    List<Categoria> categorias = ViewBag.Categorias; // Lista de categorías
-}
+<section class="seccion-interna configuracion">
+    <h2>Configurar tu partida</h2>
+    <form asp-action="Comenzar" method="get" class="form-juego">
+        <div class="input-container">
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" required placeholder="Escribe tu nombre aquí..." />
+        </div>
 
-<section class="seccion-interna">
-    <h2>Configurar Juego</h2>
-
-    <form asp-action="Comenzar" method="get">
-
-        <label for="username">Nombre de Usuario:</label>
-        <input type="text" id="username" name="username" required />
-
-        <label>Dificultad:</label>
-        <div class="radio-group">
-            @foreach (var dificultad in dificultades)
+        <!-- Sección de Dificultades -->
+        <h3>Dificultad:</h3>
+        <div class="contenedor-cards-elegibles">
+            @foreach (var dificultad in ViewBag.Dificultades)
             {
-                <label><input type="radio" name="dificultad" value="@dificultad.IdDificultad" required /> @dificultad.Nombre</label>
+                <button type="button" class="card-boton dificultad-card" data-value="@dificultad.IdDificultad">
+                    <div class="card-content">
+                        <h4>@dificultad.Nombre</h4>
+                    </div>
+                </button>
             }
         </div>
 
-        <label>Categoría:</label>
-        <div class="radio-group">
-            @foreach (var categoria in categorias)
+        <!-- Sección de Categorías -->
+        <h3>Categoría:</h3>
+        <div class="contenedor-cards-elegibles">
+            @foreach (var categoria in ViewBag.Categorias)
             {
-                <label><input type="radio" name="categoria" value="@categoria.IdCategoria" required /> @categoria.Nombre</label>
+                <button type="button" class="card-boton categoria-card" data-value="@categoria.IdCategoria">
+                    <div class="card-content">
+                        <h4>@categoria.Nombre</h4>
+                    </div>
+                </button>
             }
         </div>
 
-        <button type="submit">Jugar</button>
+        <!-- Inputs ocultos para enviar dificultad y categoría seleccionadas -->
+        <input type="hidden" id="dificultadSeleccionada" name="dificultad" />
+        <input type="hidden" id="categoriaSeleccionada" name="categoria" />
+
+        <button type="submit" class="btn-jugar">¡Comenzar!</button>
     </form>
 </section>
+
+<script>
+    // Manejar la selección de dificultad
+    document.querySelectorAll('.dificultad-card').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Eliminar la selección anterior
+            document.querySelectorAll('.dificultad-card').forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+            // Añadir la clase 'selected' al botón actual
+            this.classList.add('selected');
+            // Guardar el valor seleccionado en el input oculto
+            document.getElementById('dificultadSeleccionada').value = this.getAttribute('data-value');
+        });
+    });
+
+    // Manejar la selección de categoría
+    document.querySelectorAll('.categoria-card').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Eliminar la selección anterior
+            document.querySelectorAll('.categoria-card').forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+            // Añadir la clase 'selected' al botón actual
+            this.classList.add('selected');
+            // Guardar el valor seleccionado en el input oculto
+            document.getElementById('categoriaSeleccionada').value = this.getAttribute('data-value');
+        });
+    });
+</script>
