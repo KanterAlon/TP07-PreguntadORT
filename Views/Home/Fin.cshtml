@@ -4,10 +4,10 @@
     int? puntajeFinal = ViewBag.PuntajeFinal; // Puntaje final del usuario
 }
 
-<section class="seccion-interna">
+<section class="seccion-interna fin-juego">
     <h2>¡Juego Terminado!</h2>
-    <p>Nombre de usuario: <strong>@username</strong></p>
-    <p>Puntaje final: <strong>@puntajeFinal</strong></p>
-
-    <a href="@Url.Action("ConfigurarJuego", "Home")" class="button">Volver a Jugar</a>
+    <p>Nombre de usuario: <strong>@ViewBag.Username</strong></p>
+    <p>Puntaje final: <strong>@ViewBag.PuntajeFinal</strong></p>
+    
+    <a href="@Url.Action("ConfigurarJuego", "Home")" class="btn-jugar">Volver a Jugar</a>
 </section>
