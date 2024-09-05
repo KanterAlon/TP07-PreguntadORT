@@ -1,0 +1,9 @@
+Blanco humo (#F5F5F5): Para el fondo principal, claro y limpio.
+
+Gris claro (#C0C0C0): Usado en áreas secundarias o textos suaves.
+
+Verde oliva suave (#8C9A6D): Para elementos destacados relacionados con finanzas.
+
+Azul acero suave (#708090): Un azul grisáceo que complementa el esquema general, aportando sofisticación.
+
+Rojo granate suave (#B04A47): Un rojo apagado que funciona bien para resaltar pérdidas o aspectos negativos sin ser demasiado intenso.
