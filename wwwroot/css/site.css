@@ -1,23 +1,25 @@
 /* ---------------------------------- Variables de Colores ---------------------------------- */
 :root {
-  --color-rosa: #EE36A2;
-  --color-blanco: #F6F6F6;
-  --color-verde: #79C76E;
-  --color-fondo: var(--color-blanco);
-  --color-texto: var(--color-verde);
-  --color-acento: var(--color-rosa);
-  --color-boton: var(--color-verde);
-  --color-boton-hover: var(--color-rosa);
-  --color-correcto-bg: var(--color-verde);
-  --color-correcto-border: var(--color-verde);
+  --color-oliva: #8C9A6D;
+  --color-blanco-humo: #F5F5F5;
+  --color-gris-claro: #C0C0C0;
+  --color-rojo-granate: #B04A47;
+  --color-fondo: var(--color-blanco-humo);
+  --color-texto: var(--color-oliva);
+  --color-acento: var(--color-rojo-granate);
+  --color-boton: var(--color-oliva);
+  --color-boton-hover: var(--color-rojo-granate);
+  --color-correcto-bg: var(--color-oliva);
+  --color-correcto-border: var(--color-oliva);
   --color-correcto-texto: white;
-  --color-incorrecto-bg: var(--color-rosa);
-  --color-incorrecto-border: var(--color-rosa);
+  --color-incorrecto-bg: var(--color-rojo-granate);
+  --color-incorrecto-border: var(--color-rojo-granate);
   --color-incorrecto-texto: white;
   --color-respuesta: var(--color-texto);
 }
 
 /* ---------------------------------- General Styles ---------------------------------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html, body {
@@ -50,7 +52,6 @@ h2 {
 h3 {
   font-weight: 500;
 }
-
 /* ---------------------------------- Layout and Main Content ---------------------------------- */
 main {
   flex: 1;
@@ -58,7 +59,7 @@ main {
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-blanco);
+  background-color: var(--color-blanco-humo);
 }
 
 .seccion-interna {
@@ -289,7 +290,7 @@ header {
 }
 
 .logo img {
-  width: 300px;
+  width: 125px;
   transition: transform 0.3s ease;
 }
 

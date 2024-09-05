@@ -3,6 +3,7 @@
     bool esCorrecta = ViewBag.EsCorrecta; // Indica si la respuesta fue correcta
     Respuesta respuestaCorrecta = ViewBag.RespuestaCorrecta; // La respuesta correcta (si la respuesta fue incorrecta)
 }
+<section class="seccion-interna">
 
 <div class="result @(esCorrecta ? "correct" : "incorrect")">
     @if (esCorrecta)
@@ -23,3 +24,5 @@
 }
 
 <a href="@Url.Action("Jugar", "Home")" class="button">Siguiente Pregunta</a>
+
+</section>
