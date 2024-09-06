@@ -9,8 +9,6 @@ poner:
 https://codepen.io/steveeeie/pen/NVWMEM
 https://codepen.io/cobra_winfrey/pen/ZNGQKx
 
-
-
 los pibes:
 https://devsnap.me/css-cards
 

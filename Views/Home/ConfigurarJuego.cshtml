@@ -6,7 +6,7 @@
             <input type="text" id="username" name="username" required placeholder="Escribe tu nombre aquí..." />
         </div>
 
-        <!-- Sección de Dificultades -->
+        <!-- Sección de Dificultades
         <h3>Dificultad:</h3>
         <div class="contenedor-cards-elegibles">
             @foreach (var dificultad in ViewBag.Dificultades)
@@ -16,6 +16,21 @@
                         <h4>@dificultad.Nombre</h4>
                     </div>
                 </button>
+            }
+        </div> -->
+
+        <!-- Sección de Dificultades -->
+        <h3>Dificultad:</h3>
+        <div class="card-grid">
+            @foreach (var dificultad in ViewBag.Dificultades)
+            {
+                <a class="card dificultad-card" href="#" data-value="@dificultad.IdDificultad">
+                    <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557177324-56c542165309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)"></div>
+                    <div class="card__content">
+                        <p class="card__category">Dificultad</p>
+                        <h3 class="card__heading">@dificultad.Nombre</h3>
+                    </div>
+                </a>
             }
         </div>
 
