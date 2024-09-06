@@ -291,10 +291,86 @@ input[type="text"] {
   align-items: center;
 }
 
+/* CARDS DIFICULTADES */
+
+.l-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 80%;
+}
+
+@media screen and (max-width: 760px) {
+  .l-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.b-game-card {
+  position: relative;
+  height: 300px;
+}
+
+.b-game-card__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(120deg, var(--color-gradiente-1) 0%, var(--color-gradiente-2) 100%);
+  background-size: cover;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease-in-out;
+  border-radius: 20px;
+}
+
+/* Efecto de brillo */
+.b-game-card__cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(226deg, var(--fondo-brillo) 0%, var(--fondo-brillo) 35%, var(--fondo-brillo-medio) 42%, var(--fondo-brillo-cero) 60%);
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+  transform: translateY(-20%);
+}
+
+/* Efectos al hover */
+.b-game-card:hover .b-game-card__cover {
+  transform: rotateX(7deg) translateY(-6px);
+}
+
+.b-game-card:hover .b-game-card__cover::after {
+  transform: translateY(0%);
+}
+
+/* Sombras */
+.b-game-card::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: var(--sombra);
+  box-shadow: 0 6px 12px 12px var(--sombra);
+  transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.b-game-card:hover::before {
+  opacity: 0.6;
+  transform: rotateX(7deg) translateY(-6px) scale(1.05);
+}
+
+/* CARDS CATEGORÍAS */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   width: 80%;
 }
 
@@ -313,20 +389,20 @@ input[type="text"] {
 .card {
   position: relative;
   list-style: none;
-  height: 200px;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .card:before {
   content: '';
   display: block;
-  padding-bottom: 150%;
+  height: 300px; /* Fija una altura específica si prefieres una altura fija */
   width: 100%;
 }
 
 .card__background {
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
   bottom: 0;
   filter: brightness(0.75) saturate(1.2) contrast(0.85);
   left: 0;
@@ -336,7 +412,7 @@ input[type="text"] {
   transform-origin: center;
   transform: scale(1);
   transition: transform 200ms linear, filter 200ms linear;
-  background-color: transparent;
+  border-radius: 20px;
 }
 
 .card:hover .card__background {
@@ -349,23 +425,23 @@ input[type="text"] {
 
 .card__content {
   left: 0;
-  padding: var(--spacing-l);
+  padding: 1rem;
   position: absolute;
   top: 0;
-}
-
-.card__category {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-s);
-  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .card__heading {
-  color: var(--text-lighter);
-  font-size: 1.9rem;
+  color: var(--color-blanco-humo);
+  font-size: 2.25rem;
   text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
   line-height: 1.4;
+  font-weight: 600;
+  width: 100%;
 }
 
 /* Botón de Comenzar */
