@@ -1,6 +1,9 @@
 <section class="seccion-interna configuracion">
-    <h2>Configurar tu partida</h2>
+
     <form asp-action="Comenzar" method="get" class="form-juego">
+
+        <h1>Configurar tu partida</h1>
+
         <div class="input-container">
             <label for="username">Nombre de Usuario:</label>
             <input type="text" id="username" name="username" required placeholder="Escribe tu nombre aquí..." />
@@ -25,7 +28,7 @@
         <div class="card-grid">
             @foreach (var categoria in ViewBag.Categorias)
             {
-                <a class="card" href="#" data-value="@categoria.IdCategoria">
+                <a class="card-categoria" href="#" data-value="@categoria.IdCategoria">
                     <div class="card__background" style="background-image: url(@categoria.Foto)"></div>
                     <div class="card__content">
                         <h3 class="card__heading">@categoria.Nombre</h3>
@@ -48,25 +51,25 @@
     document.querySelectorAll('.dificultad-card').forEach(function(button) {
         button.addEventListener('click', function() {
             // Eliminar la selección anterior
-            document.querySelectorAll('.dificultad-card').forEach(function(btn) {
-                btn.classList.remove('selected');
+            document.querySelectorAll('.dificultad-card .b-game-card__cover').forEach(function(cover) {
+                cover.classList.remove('selected');
             });
-            // Añadir la clase 'selected' al botón actual
-            this.classList.add('selected');
+            // Añadir la clase 'selected' al div de imagen actual
+            this.querySelector('.b-game-card__cover').classList.add('selected');
             // Guardar el valor seleccionado en el input oculto
             document.getElementById('dificultadSeleccionada').value = this.getAttribute('data-value');
         });
     });
 
     // Manejar la selección de categoría
-    document.querySelectorAll('.categoria-card').forEach(function(button) {
+    document.querySelectorAll('.card-categoria').forEach(function(button) {
         button.addEventListener('click', function() {
             // Eliminar la selección anterior
-            document.querySelectorAll('.categoria-card').forEach(function(btn) {
-                btn.classList.remove('selected');
+            document.querySelectorAll('.card-categoria .card__background').forEach(function(background) {
+                background.classList.remove('selected');
             });
-            // Añadir la clase 'selected' al botón actual
-            this.classList.add('selected');
+            // Añadir la clase 'selected' al div de imagen actual
+            this.querySelector('.card__background').classList.add('selected');
             // Guardar el valor seleccionado en el input oculto
             document.getElementById('categoriaSeleccionada').value = this.getAttribute('data-value');
         });
