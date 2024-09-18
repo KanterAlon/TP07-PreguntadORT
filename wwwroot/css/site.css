@@ -296,7 +296,7 @@ input[type="text"] {
 .l-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 30px;
   width: 80%;
 }
 
@@ -318,14 +318,35 @@ input[type="text"] {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: linear-gradient(120deg, var(--color-gradiente-1) 0%, var(--color-gradiente-2) 100%);
-  background-size: cover;
+  perspective-origin: 50% 50%;
   transform-style: preserve-3d;
+  transform-origin: top center;
+  will-change: transform;
+  transform: skewX(0.001deg);
   transition: transform 0.35s ease-in-out;
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Efecto de brillo */
+.b-game-card__cover .image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; 
+}
+
+.b-game-card__cover h3 {
+  color: var(--color-blanco-humo);
+  font-weight: 600;
+  position: relative; 
+  z-index: 1;
+}
+
 .b-game-card__cover::after {
   content: '';
   position: absolute;
@@ -333,12 +354,12 @@ input[type="text"] {
   left: 0;
   width: 100%;
   height: 120%;
-  background: linear-gradient(226deg, var(--fondo-brillo) 0%, var(--fondo-brillo) 35%, var(--fondo-brillo-medio) 42%, var(--fondo-brillo-cero) 60%);
-  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+  background: linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.2) 42%, rgba(255, 255, 255, 0) 60%);
   transform: translateY(-20%);
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
 }
 
-/* Efectos al hover */
 .b-game-card:hover .b-game-card__cover {
   transform: rotateX(7deg) translateY(-6px);
 }
@@ -347,7 +368,6 @@ input[type="text"] {
   transform: translateY(0%);
 }
 
-/* Sombras */
 .b-game-card::before {
   content: '';
   position: absolute;
@@ -355,8 +375,11 @@ input[type="text"] {
   left: 5%;
   width: 90%;
   height: 90%;
-  background: var(--sombra);
-  box-shadow: 0 6px 12px 12px var(--sombra);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+  transform-origin: top center;
+  transform: skewX(0.001deg);
   transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
 }
 
