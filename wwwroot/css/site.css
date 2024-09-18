@@ -322,6 +322,7 @@ input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
 }
 
 .b-game-card__cover .image-container {
