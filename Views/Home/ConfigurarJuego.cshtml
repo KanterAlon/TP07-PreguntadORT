@@ -25,7 +25,10 @@
             @foreach (var dificultad in ViewBag.Dificultades)
             {
                 <div class="b-game-card dificultad-card" data-value="@dificultad.IdDificultad">
-                    <div class="b-game-card__cover" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_1.jpg);"></div>
+                   <div class="b-game-card__cover">
+                        <div class="image-container" style="background-image: url(@dificultad.Foto);"></div>
+                        <h3>@dificultad.Nombre</h3>
+                    </div>
                 </div>
             }
         </div>
@@ -36,7 +39,7 @@
             @foreach (var categoria in ViewBag.Categorias)
             {
                 <a class="card" href="#" data-value="@categoria.IdCategoria">
-                    <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557177324-56c542165309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)"></div>
+                    <div class="card__background" style="background-image: url(@categoria.Foto)"></div>
                     <div class="card__content">
                         <h3 class="card__heading">@categoria.Nombre</h3>
                     </div>
