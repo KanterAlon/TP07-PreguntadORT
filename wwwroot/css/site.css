@@ -264,7 +264,7 @@ form {
 }
 
 label {
-  margin: 10px 0 5px;
+  margin: 0;
   font-weight: bold;
   font-size: 18px;
   color: var(--color-oliva);
@@ -402,14 +402,18 @@ input[type="text"] {
   }
 }
 
-.card {
+.card-categoria {
   position: relative;
   list-style: none;
   background-color: transparent !important;
   border: none !important;
 }
 
-.card:before {
+.selected {
+  border: 5px solid var(--color-azul-acero);
+}
+
+.card-categoria:before {
   content: '';
   display: block;
   height: 300px; /* Fija una altura específica si prefieres una altura fija */
@@ -431,11 +435,11 @@ input[type="text"] {
   border-radius: 20px;
 }
 
-.card:hover .card__background {
+.card-categoria:hover .card__background {
   transform: scale(1.05);
 }
 
-.card-grid:hover > .card:not(:hover) .card__background{
+.card-grid:hover > .card-categoria:not(:hover) .card__background{
   filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
 }
 
