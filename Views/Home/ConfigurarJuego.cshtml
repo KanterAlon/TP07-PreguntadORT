@@ -6,35 +6,22 @@
             <input type="text" id="username" name="username" required placeholder="Escribe tu nombre aquí..." />
         </div>
 
-        <!-- Sección de Dificultades
-        <h3>Dificultad:</h3>
-        <div class="contenedor-cards-elegibles">
-            @foreach (var dificultad in ViewBag.Dificultades)
-            {
-                <button type="button" class="card-boton dificultad-card" data-value="@dificultad.IdDificultad">
-                    <div class="card-content">
-                        <h4>@dificultad.Nombre</h4>
-                    </div>
-                </button>
-            }
-        </div> -->
-
        <!-- Sección de Dificultades -->
-        <h3>Dificultad:</h3>
+        <h1>Dificultad:</h1>
         <div class="l-container">
             @foreach (var dificultad in ViewBag.Dificultades)
             {
                 <div class="b-game-card dificultad-card" data-value="@dificultad.IdDificultad">
                    <div class="b-game-card__cover">
                         <div class="image-container" style="background-image: url(@dificultad.Foto);"></div>
-                        <h3>@dificultad.Nombre</h3>
+                        <h3 class="card__heading">@dificultad.Nombre</h3>
                     </div>
                 </div>
             }
         </div>
 
         <!-- Sección de Categorías -->
-        <h3>Categoría:</h3>
+        <h1>Categoría:</h1>
         <div class="card-grid">
             @foreach (var categoria in ViewBag.Categorias)
             {

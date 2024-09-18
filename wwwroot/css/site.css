@@ -254,18 +254,13 @@ header, header nav {
 }
 
 /* ---------------------------------- Configuración de Juego ---------------------------------- */
-h2 {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 25px;
-  color: var(--color-azul-acero);
-}
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 3rem;
 }
 
 label {
@@ -337,14 +332,12 @@ input[type="text"] {
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.5; 
+  filter: brightness(0.75) saturate(1.2) contrast(0.85);
 }
 
 .b-game-card__cover h3 {
-  color: var(--color-blanco-humo);
-  font-weight: 600;
-  position: relative; 
   z-index: 1;
+  text-align: center;
 }
 
 .b-game-card__cover::after {
