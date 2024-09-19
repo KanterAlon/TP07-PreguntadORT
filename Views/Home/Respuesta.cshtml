@@ -14,7 +14,8 @@
         else
         {     
             <img src="../Imagenes/cruz.svg"><img>
-            <p>¡Respuesta Incorrecta! La respuesta correcta era: <strong>@ViewBag.RespuestaCorrecta.Contenido</strong></p>
+            <h2>¡Respuesta Incorrecta!</h2>
+            <p>La respuesta correcta era: <strong>@ViewBag.RespuestaCorrecta.Contenido</strong></p>
         }
 
         <a href="@Url.Action("Jugar", "Home")" class="btn-jugar">Siguiente Pregunta</a>
