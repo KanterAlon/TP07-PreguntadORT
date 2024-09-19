@@ -1,3 +1,8 @@
+@{
+    // Serializa las categorías desde el ViewBag
+    var categoriasJson = Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Categorias);
+}
+
 <section class="seccion-interna configuracion">
 
     <form asp-action="Comenzar" method="get" class="form-juego">
@@ -22,10 +27,12 @@
                 </div>
             }
         </div>
+        
+        <button id="random-category-btn" type="button">Elegir Categoría Aleatoriamente</button>
 
         <!-- Sección de Categorías -->
         <h1>Categoría:</h1>
-        <div class="card-grid">
+        <div class="card-grid" id="card-grid">
             @foreach (var categoria in ViewBag.Categorias)
             {
                 <a class="card-categoria" href="#" data-value="@categoria.IdCategoria">
@@ -36,7 +43,12 @@
                 </a>
             }
         </div>
-        
+
+        <div id="ruleta-container" style="display: none;">
+            <div class="contenedor-ruleta">
+                <div class="ruleta"></div>
+            </div>
+        </div>
 
         <!-- Inputs ocultos para enviar dificultad y categoría seleccionadas -->
         <input type="hidden" id="dificultadSeleccionada" name="dificultad" />
@@ -74,5 +86,84 @@
             document.getElementById('categoriaSeleccionada').value = this.getAttribute('data-value');
         });
     });
-</script>
 
+    // RULETA
+// Cargamos el JSON de categorías desde Razor
+    var categorias = @Html.Raw(categoriasJson); 
+
+    console.log(categorias);  // Verifica en la consola del navegador qué datos se están pasando
+
+    // El resto del código para generar la ruleta
+    $(document).ready(function () {
+        document.getElementById('random-category-btn').addEventListener('click', function () {
+            var cardGrid = document.getElementById('card-grid');
+            if (cardGrid) {
+                cardGrid.style.display = 'none'; // Asegúrate de que el elemento existe antes de intentar manipularlo
+            }
+            document.getElementById('ruleta-container').style.display = 'block';
+            generarRuleta();
+        });
+
+        function generarRuleta() {
+            var tamanyoRuleta = 360;
+            var categorias = @Html.Raw(categoriasJson); 
+            var numeroCasillas = categorias.length;
+            console.log("Número de categorías:", numeroCasillas);  // Depuración
+
+            var anguloCasillas = 360 / numeroCasillas;  // Asegúrate de que este cálculo es correcto
+            var grados = (180 - anguloCasillas) / 2;
+            var alturaCasilla = Math.tan(grados * Math.PI / 180) * (tamanyoRuleta / 2);
+
+            $(".ruleta").empty().css({
+                'width': tamanyoRuleta + 'px',
+                'height': tamanyoRuleta + 'px'
+            });
+
+            for (var i = 0; i < numeroCasillas; i++) {
+                var categoria = categorias[i];
+                var categoriaNombre = categoria.Nombre;
+
+                var opcionDiv = $('<div></div>').addClass('opcion opcion-' + i);
+                opcionDiv.css({
+                    'transform': 'rotate(' + anguloCasillas * i + 'deg)',  // Corregimos el cálculo de la rotación
+                    'border-bottom-color': getRandomColor(),
+                    'border-bottom-width': alturaCasilla + 'px',
+                    'border-right-width': (tamanyoRuleta / 2) + 'px',
+                    'border-left-width': (tamanyoRuleta / 2) + 'px'
+                });
+
+                var categoriaSpan = $('<span class="categoria-nombre"></span>').text(categoriaNombre);
+                opcionDiv.append(categoriaSpan);
+                $(".ruleta").append(opcionDiv);
+            }
+
+            $('.ruleta').click(function () {
+                var num = Math.floor(Math.random() * numeroCasillas);
+                var categoriaSeleccionada = categorias[num];
+                document.getElementById('categoriaSeleccionada').value = categoriaSeleccionada.IdCategoria;
+
+                // Simular el giro de la ruleta
+                $('#animacionRuleta').remove();
+                $('head').append('<style id="animacionRuleta">' +
+                    '#number-' + num + ' { animation-name: number-' + num + '; } ' +
+                    '@@keyframes number-' + num + ' {' +
+                    'from { transform: rotate(0); } ' +
+                    'to { transform: rotate(' + (360 * (numeroCasillas - 1) - anguloCasillas * num) + 'deg); }' +
+                    '}</style>'
+                );
+
+                $('.ruleta').removeAttr('id').attr('id', 'number-' + num);
+            });
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    });
+
+</script>
