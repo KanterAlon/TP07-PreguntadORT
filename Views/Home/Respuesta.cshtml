@@ -8,13 +8,15 @@
     <div class="result @(ViewBag.EsCorrecta ? "correct" : "incorrect")">
         @if (ViewBag.EsCorrecta)
         {
-            <p>¡Respuesta Correcta!</p>
+            <img src="../Imagenes/tick.svg"><img>
+            <h2>¡Respuesta Correcta!</h2>
         }
         else
-        {
+        {     
+            <img src="../Imagenes/cruz.svg"><img>
             <p>¡Respuesta Incorrecta! La respuesta correcta era: <strong>@ViewBag.RespuestaCorrecta.Contenido</strong></p>
         }
-    </div>
 
-    <a href="@Url.Action("Jugar", "Home")" class="btn-jugar">Siguiente Pregunta</a>
+        <a href="@Url.Action("Jugar", "Home")" class="btn-jugar">Siguiente Pregunta</a>
+    </div>
 </section>
