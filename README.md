@@ -1,4 +1,5 @@
 # TP07-PreguntadORT
+dotnet add package Newtonsoft.Json
 
 cosas a ver
 
