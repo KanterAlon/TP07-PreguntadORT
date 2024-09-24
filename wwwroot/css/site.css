@@ -79,10 +79,6 @@ main {
   text-decoration: none;
 }
 
-.button:hover {
-  background-color: var(--color-rojo-granate);
-}
-
 .button, 
 .response-container button, 
 #submit-btn {
@@ -90,9 +86,7 @@ main {
   transition: background-color 0.3s ease;
 }
 
-.button:hover, 
-.response-container button:hover, 
-#submit-btn:hover {
+.boton:hover {
   background-color: var(--color-rojo-granate);
 }
 
@@ -304,6 +298,7 @@ input[type="text"] {
 .b-game-card {
   position: relative;
   height: 300px;
+  cursor: pointer;
 }
 
 .b-game-card__cover {
@@ -412,6 +407,23 @@ input[type="text"] {
 
 .selected {
   border: 5px solid var(--color-azul-acero);
+  box-shadow: 0 0 15px rgba(0, 183, 255, 0.8), 0 0 30px rgba(0, 183, 255, 0.5);
+  transition: all 0.3s ease;
+  border-radius: 15px; /* Bordes redondeados para darle un aspecto más moderno */
+  background: linear-gradient(145deg, rgba(0,183,255,0.1), rgba(255,255,255,0.05)); /* Toque futurista en el fondo */
+}
+
+/* Estilos para el botón "Elegir al azar" */
+
+.btn-random {
+  background-color: var(--color-azul-acero);
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .card-categoria:before {
@@ -491,6 +503,8 @@ img {
   margin: 0 auto;
 }
 
+
+
 /* ---------------------------------- Respuesta ---------------------------------- */
 
 .resultado {
@@ -542,34 +556,107 @@ img {
   color: var(--color-azul-acero);
 }
 
-/* Question and Response Styles */
-.question-container {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.response-container button {
+/* ---------------------------------- Juego ---------------------------------- */
+.seccion-interna.juego {
+  padding-block: 3rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 2rem;
+}
+
+.puntaje-user {
+  display: flex;
   justify-content: center;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  background-color: var(--color-azul-acero);
-  color: white;
-  font-size: 16px;
+  align-items: center;
+}
+
+.puntaje-user h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-azul-acero);
+}
+
+.question-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  max-width: 800px;
   width: 100%;
-  max-width: 350px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-jugar {
-  text-decoration: none;
-  margin: 0;
+.question-container h3 {
+  font-size: 1.5rem;
   font-weight: 500;
+  color: var(--color-oliva);
+  margin-bottom: 1rem;
 }
 
-.response-container button img {
-  margin-right: 10px;
-  border-radius: 4px;
+.imagen-pregunta {
+  max-height: 300px;
+  width: auto;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
 }
 
+.response-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  gap: 1rem;
+}
+
+.btn-respuesta {
+  width: 100%;
+  background-color: var(--color-azul-acero);
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-blanco-humo);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-respuesta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-blanco-humo);
+  transform: translateY(100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.btn-respuesta:hover:before {
+  transform: translateY(0);
+}
+
+.btn-respuesta:hover {
+  color: var(--color-azul-acero);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-respuesta span {
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}

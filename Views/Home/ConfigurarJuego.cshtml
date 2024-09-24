@@ -1,7 +1,5 @@
 <section class="seccion-interna configuracion">
-
     <form asp-action="Comenzar" method="get" class="form-juego">
-
         <h1>Configurar tu partida</h1>
 
         <div class="input-container">
@@ -9,13 +7,13 @@
             <input type="text" id="username" name="username" required placeholder="Escribe tu nombre aquí..." />
         </div>
 
-       <!-- Sección de Dificultades -->
+        <!-- Sección de Dificultades -->
         <h1>Dificultad:</h1>
         <div class="l-container">
             @foreach (var dificultad in ViewBag.Dificultades)
             {
                 <div class="b-game-card dificultad-card" data-value="@dificultad.IdDificultad">
-                   <div class="b-game-card__cover">
+                    <div class="b-game-card__cover">
                         <div class="image-container" style="background-image: url(@dificultad.Foto);"></div>
                         <h3 class="card__heading">@dificultad.Nombre</h3>
                     </div>
@@ -25,6 +23,11 @@
 
         <!-- Sección de Categorías -->
         <h1>Categoría:</h1>
+
+        <!-- Botón "Elegir al azar" -->
+
+        <button type="button" id="btn-random" class="btn-random">Elegir al azar</button>
+
         <div class="card-grid">
             @foreach (var categoria in ViewBag.Categorias)
             {
@@ -36,7 +39,6 @@
                 </a>
             }
         </div>
-        
 
         <!-- Inputs ocultos para enviar dificultad y categoría seleccionadas -->
         <input type="hidden" id="dificultadSeleccionada" name="dificultad" />
@@ -63,7 +65,8 @@
 
     // Manejar la selección de categoría
     document.querySelectorAll('.card-categoria').forEach(function(button) {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Evitar que la página se desplace hacia arriba
             // Eliminar la selección anterior
             document.querySelectorAll('.card-categoria .card__background').forEach(function(background) {
                 background.classList.remove('selected');
@@ -74,5 +77,31 @@
             document.getElementById('categoriaSeleccionada').value = this.getAttribute('data-value');
         });
     });
-</script>
 
+    // Función para elegir una categoría al azar
+    document.getElementById('btn-random').addEventListener('click', function() {
+        var cards = document.querySelectorAll('.card-categoria .card__background');
+        var totalCards = cards.length;
+        var currentIndex = 0;
+        var interval = setInterval(function() {
+            // Remover clase seleccionada de todas las tarjetas
+            cards.forEach(function(card) {
+                card.classList.remove('selected');
+            });
+            // Agregar clase seleccionada a la tarjeta actual
+            cards[currentIndex].classList.add('selected');
+            currentIndex = (currentIndex + 1) % totalCards;
+        }, 100); // Velocidad de cambio (100ms)
+
+        // Después de 5 segundos, detener el intervalo y seleccionar una aleatoria
+        setTimeout(function() {
+            clearInterval(interval);
+            var randomIndex = Math.floor(Math.random() * totalCards);
+            cards.forEach(function(card) {
+                card.classList.remove('selected');
+            });
+            cards[randomIndex].classList.add('selected');
+            document.getElementById('categoriaSeleccionada').value = cards[randomIndex].parentElement.getAttribute('data-value');
+        }, 5000); // 5000ms = 5 segundos
+    });
+</script>
