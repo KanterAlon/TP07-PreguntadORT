@@ -13,10 +13,10 @@
 
     <div class="question-container">
         <h3>@ViewBag.Pregunta.Enunciado</h3>
-        <!-- @if (!string.IsNullOrEmpty(@ViewBag.Pregunta.Foto))
+        @if (!string.IsNullOrEmpty(@ViewBag.Pregunta.Foto))
         {
             <img src="@ViewBag.Pregunta.Foto" alt="Imagen de la pregunta" class="imagen-pregunta"/>
-        } -->
+        }
     </div>
 
     <form asp-action="VerificarRespuesta" method="post">
