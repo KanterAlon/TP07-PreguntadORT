@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;  // Asegúrate de que esto está presente
+using Newtonsoft.Json.Linq;  
 
 public class HomeController : Controller
 {
@@ -50,7 +50,10 @@ public class HomeController : Controller
             ViewBag.Username = Juego.ObtenerUsername();
             ViewBag.PuntajeActual = Juego.ObtenerPuntajeActual();
             ViewBag.Pregunta = preguntaActual;
-            ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
+            var respuestas = Juego.ObtenerProximasRespuestas(preguntaActual.IdPregunta);
+
+            // Randomizar el orden de las respuestas
+            ViewBag.Respuestas = respuestas.OrderBy(x => Guid.NewGuid()).ToList();
 
             // Busca la imagen relacionada con la pregunta
             string imageUrl = await ObtenerImagenPregunta(preguntaActual.Enunciado);

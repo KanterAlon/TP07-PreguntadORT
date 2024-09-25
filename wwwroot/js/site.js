@@ -17,3 +17,17 @@ function activarAnimaciones(elementoAnimar) {
         }
     });
 }
+
+// Mostrar el div al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionamos el div
+    var cuadrante = document.querySelector('.cuadrante-momentaneo');
+    
+    // Hacemos que el div sea visible
+    cuadrante.style.display = 'block';
+    
+    // Después de 5 segundos, ocultamos el div
+    setTimeout(function() {
+        cuadrante.style.display = 'none';
+    }, 5000); // 5000ms = 5 segundos
+});
