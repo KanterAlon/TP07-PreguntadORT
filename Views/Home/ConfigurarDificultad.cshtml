@@ -1,0 +1,32 @@
+<section class="seccion-interna configurar-dificultad">
+    <form asp-action="GuardarDificultad" method="post" class="form-juego">
+        <h1>Configura la Dificultad</h1>
+
+        <div class="l-container">
+            @foreach (var dificultad in ViewBag.Dificultades)
+            {
+                <div class="b-game-card dificultad-card" data-value="@dificultad.IdDificultad">
+                    <div class="b-game-card__cover">
+                        <div class="image-container" style="background-image: url(@dificultad.Foto);"></div>
+                        <h3 class="card__heading">@dificultad.Nombre</h3>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <input type="hidden" id="dificultadSeleccionada" name="dificultad" />
+        <button type="submit" class="btn-jugar">Siguiente</button>
+    </form>
+</section>
+
+<script>
+    document.querySelectorAll('.dificultad-card').forEach(function(button) {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.dificultad-card .b-game-card__cover').forEach(function(cover) {
+                cover.classList.remove('selected');
+            });
+            this.querySelector('.b-game-card__cover').classList.add('selected');
+            document.getElementById('dificultadSeleccionada').value = this.getAttribute('data-value');
+        });
+    });
+</script>

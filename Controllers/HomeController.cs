@@ -110,5 +110,45 @@ public class HomeController : Controller
         ViewBag.RespuestaCorrecta = respuestaCorrecta;
         return View("Respuesta");
     }
+    public IActionResult ConfigurarNombre()
+    {
+        return View();
+    }
 
+    [HttpPost]
+    public IActionResult GuardarNombre(string username)
+    {
+        TempData["Username"] = username;
+        return RedirectToAction("ConfigurarDificultad");
+    }
+
+    public IActionResult ConfigurarDificultad()
+    {
+        ViewBag.Dificultades = Juego.ObtenerDificultades();
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult GuardarDificultad(int dificultad)
+    {
+        TempData["Dificultad"] = dificultad;
+        return RedirectToAction("ConfigurarCategoria");
+    }
+
+    public IActionResult ConfigurarCategoria()
+    {
+        ViewBag.Categorias = Juego.ObtenerCategorias();
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult GuardarCategoria(int categoria)
+    {
+        string username = TempData["Username"].ToString();
+        int dificultad = (int)TempData["Dificultad"];
+        
+        // Guardar la configuración del juego y comenzar
+        return RedirectToAction("Comenzar", new { username, dificultad, categoria });
+    }
 }
+

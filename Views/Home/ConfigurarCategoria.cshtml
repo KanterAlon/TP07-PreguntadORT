@@ -1,0 +1,62 @@
+<section class="seccion-interna configurar-categoria">
+    <form asp-action="GuardarCategoria" method="post" class="form-juego">
+        <h1>Configura la Categoría</h1>
+
+         <button type="button" id="btn-random" class="btn-jugar">Elegir al azar</button>
+
+        <div class="card-grid">
+            @foreach (var categoria in ViewBag.Categorias)
+            {
+                <a class="card-categoria" href="#" data-value="@categoria.IdCategoria">
+                    <div class="card__background" style="background-image: url(@categoria.Foto)"></div>
+                    <div class="card__content">
+                        <h3 class="card__heading">@categoria.Nombre</h3>
+                    </div>
+                </a>
+            }
+        </div>
+
+        <input type="hidden" id="categoriaSeleccionada" name="categoria" />
+        <button type="submit" class="btn-jugar">Comenzar</button>
+    </form>
+</section>
+
+<script>
+    document.querySelectorAll('.card-categoria').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelectorAll('.card-categoria .card__background').forEach(function(background) {
+                background.classList.remove('selected');
+            });
+            this.querySelector('.card__background').classList.add('selected');
+            document.getElementById('categoriaSeleccionada').value = this.getAttribute('data-value');
+        });
+    });
+
+    // Función para elegir una categoría al azar
+    document.getElementById('btn-random').addEventListener('click', function() {
+        var cards = document.querySelectorAll('.card-categoria .card__background');
+        var totalCards = cards.length;
+        var currentIndex = 0;
+        var interval = setInterval(function() {
+            // Remover clase seleccionada de todas las tarjetas
+            cards.forEach(function(card) {
+                card.classList.remove('selected');
+            });
+            // Agregar clase seleccionada a la tarjeta actual
+            cards[currentIndex].classList.add('selected');
+            currentIndex = (currentIndex + 1) % totalCards;
+        }, 100); // Velocidad de cambio (100ms)
+
+        // Después de 5 segundos, detener el intervalo y seleccionar una aleatoria
+        setTimeout(function() {
+            clearInterval(interval);
+            var randomIndex = Math.floor(Math.random() * totalCards);
+            cards.forEach(function(card) {
+                card.classList.remove('selected');
+            });
+            cards[randomIndex].classList.add('selected');
+            document.getElementById('categoriaSeleccionada').value = cards[randomIndex].parentElement.getAttribute('data-value');
+        }, 5000); // 5000ms = 5 segundos
+    });
+</script>
