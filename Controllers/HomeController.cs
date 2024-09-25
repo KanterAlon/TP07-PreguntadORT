@@ -55,50 +55,50 @@ public class HomeController : Controller
             // Randomizar el orden de las respuestas
             ViewBag.Respuestas = respuestas.OrderBy(x => Guid.NewGuid()).ToList();
 
-            // Busca la imagen relacionada con la pregunta
-            string imageUrl = await ObtenerImagenPregunta(preguntaActual.Enunciado);
-            ViewBag.Pregunta.Foto = imageUrl;
+            // // Busca la imagen relacionada con la pregunta
+            // string imageUrl = await ObtenerImagenPregunta(preguntaActual.Enunciado);
+            // ViewBag.Pregunta.Foto = imageUrl;
 
             Juego.AvanzarAPreguntaSiguiente();
             return View("Juego");
         }
     }
 
-    private async Task<string> ObtenerImagenPregunta(string pregunta)
-{
-    // 1. Eliminar el primer carácter si es un signo de interrogación
-    if (pregunta.StartsWith("¿"))
-    {
-        pregunta = pregunta.Substring(1); // Elimina el primer carácter
-    }
+//     private async Task<string> ObtenerImagenPregunta(string pregunta)
+// {
+//     // 1. Eliminar el primer carácter si es un signo de interrogación
+//     if (pregunta.StartsWith("¿"))
+//     {
+//         pregunta = pregunta.Substring(1); // Elimina el primer carácter
+//     }
 
-    // 2. Eliminar el último carácter si es un signo de interrogación
-    if (pregunta.EndsWith("?"))
-    {
-        pregunta = pregunta.Substring(0, pregunta.Length - 1); // Elimina el último carácter
-    }
+//     // 2. Eliminar el último carácter si es un signo de interrogación
+//     if (pregunta.EndsWith("?"))
+//     {
+//         pregunta = pregunta.Substring(0, pregunta.Length - 1); // Elimina el último carácter
+//     }
 
-    // 3. Dividir la pregunta en palabras y eliminar las primeras tres
-    var palabras = pregunta.Split(' ').ToList();
-    if (palabras.Count > 3)
-    {
-        palabras.RemoveRange(0, 3); // Eliminar las primeras tres palabras
-    }
+//     // 3. Dividir la pregunta en palabras y eliminar las primeras tres
+//     var palabras = pregunta.Split(' ').ToList();
+//     if (palabras.Count > 3)
+//     {
+//         palabras.RemoveRange(0, 3); // Eliminar las primeras tres palabras
+//     }
 
-    // 4. Unir el resto de las palabras en un nuevo string para la búsqueda
-    string textoParaBuscar = string.Join(" ", palabras);
+//     // 4. Unir el resto de las palabras en un nuevo string para la búsqueda
+//     string textoParaBuscar = string.Join(" ", palabras);
 
-    // 5. Realizar la búsqueda de imagen usando Google Custom Search API
-    string searchUrl = $"https://www.googleapis.com/customsearch/v1?q={textoParaBuscar}&cx={searchEngineId}&key={apiKey}&searchType=image";
+//     // 5. Realizar la búsqueda de imagen usando Google Custom Search API
+//     string searchUrl = $"https://www.googleapis.com/customsearch/v1?q={textoParaBuscar}&cx={searchEngineId}&key={apiKey}&searchType=image";
 
-    using (HttpClient client = new HttpClient())
-    {
-        var response = await client.GetStringAsync(searchUrl);
-        var jsonData = JObject.Parse(response);
-        string imageUrl = (string)jsonData["items"]?[0]?["link"];
-        return imageUrl;
-    }
-}
+//     using (HttpClient client = new HttpClient())
+//     {
+//         var response = await client.GetStringAsync(searchUrl);
+//         var jsonData = JObject.Parse(response);
+//         string imageUrl = (string)jsonData["items"]?[0]?["link"];
+//         return imageUrl;
+//     }
+// }
 
 
     [HttpPost]
