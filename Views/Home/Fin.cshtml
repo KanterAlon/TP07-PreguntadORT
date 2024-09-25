@@ -1,7 +1,8 @@
 @{
     ViewBag.Title = "Fin del Juego - PreguntadORT";
     string username = ViewBag.Username; 
-    int? puntajeFinal = ViewBag.PuntajeFinal;
+    int? puntajeFinal = ViewBag.PuntajeFinal;    
+    string documentId = "1VwX7KTJBkgIydwd0uBgDNEyPlXtLHaxD_tQ43JPku4g"; // Aquí debes pasar el ID del documento
 }
 
 <section class="seccion-interna fin-juego">
@@ -10,4 +11,21 @@
     <p>Puntaje final: <strong>@ViewBag.PuntajeFinal</strong></p>
     
     <a href="@Url.Action("ConfigurarJuego", "Home")" class="btn-jugar">Volver a Jugar</a>
+</section>
+
+<section class="seccion-interna editar-documento">
+    <h2>Editar Documento de Google</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+    
+    <form method="post" action="@Url.Action("EditDocument", "Home", new { documentId = documentId })">
+        <div>
+            <label for="contentToUpdate">Texto a insertar en el documento:</label>
+            <textarea id="contentToUpdate" name="contentToUpdate" rows="5" cols="50"></textarea>
+        </div>
+        <button type="submit">Actualizar Documento</button>
+    </form>
 </section>

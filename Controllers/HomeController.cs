@@ -2,12 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;  
+using Newtonsoft.Json.Linq;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Docs.v1;
+using Google.Apis.Docs.v1.Data;
+using Google.Apis.Services;
+using System.Collections.Generic;
 
 public class HomeController : Controller
 {
     private static readonly string apiKey = "AIzaSyAFMipJ28INQ7J4EO_VTKveEYdN4xOsVbo";
     private static readonly string searchEngineId = "e7c362857bd514401";
+
+    private readonly string[] Scopes = { DocsService.Scope.Documents };
+    private readonly string ApplicationName = "PreguntadOrt";
 
     public IActionResult Index()
     {
@@ -56,50 +64,43 @@ public class HomeController : Controller
             ViewBag.Respuestas = respuestas.OrderBy(x => Guid.NewGuid()).ToList();
 
             // Busca la imagen relacionada con la pregunta
-            string imageUrl = await ObtenerImagenPregunta(preguntaActual.Enunciado);
-            ViewBag.Pregunta.Foto = imageUrl;
+            // string imageUrl = await ObtenerImagenPregunta(preguntaActual.Enunciado);
+            // ViewBag.Pregunta.Foto = imageUrl;
 
             Juego.AvanzarAPreguntaSiguiente();
             return View("Juego");
         }
     }
 
-    private async Task<string> ObtenerImagenPregunta(string pregunta)
-{
-    // 1. Eliminar el primer carácter si es un signo de interrogación
-    if (pregunta.StartsWith("¿"))
-    {
-        pregunta = pregunta.Substring(1); // Elimina el primer carácter
-    }
+    // private async Task<string> ObtenerImagenPregunta(string pregunta)
+    // {
+    //     if (pregunta.StartsWith("¿"))
+    //     {
+    //         pregunta = pregunta.Substring(1);
+    //     }
 
-    // 2. Eliminar el último carácter si es un signo de interrogación
-    if (pregunta.EndsWith("?"))
-    {
-        pregunta = pregunta.Substring(0, pregunta.Length - 1); // Elimina el último carácter
-    }
+    //     if (pregunta.EndsWith("?"))
+    //     {
+    //         pregunta = pregunta.Substring(0, pregunta.Length - 1);
+    //     }
 
-    // 3. Dividir la pregunta en palabras y eliminar las primeras tres
-    var palabras = pregunta.Split(' ').ToList();
-    if (palabras.Count > 3)
-    {
-        palabras.RemoveRange(0, 3); // Eliminar las primeras tres palabras
-    }
+    //     var palabras = pregunta.Split(' ').ToList();
+    //     if (palabras.Count > 3)
+    //     {
+    //         palabras.RemoveRange(0, 3);
+    //     }
 
-    // 4. Unir el resto de las palabras en un nuevo string para la búsqueda
-    string textoParaBuscar = string.Join(" ", palabras);
+    //     string textoParaBuscar = string.Join(" ", palabras);
+    //     string searchUrl = $"https://www.googleapis.com/customsearch/v1?q={textoParaBuscar}&cx={searchEngineId}&key={apiKey}&searchType=image";
 
-    // 5. Realizar la búsqueda de imagen usando Google Custom Search API
-    string searchUrl = $"https://www.googleapis.com/customsearch/v1?q={textoParaBuscar}&cx={searchEngineId}&key={apiKey}&searchType=image";
-
-    using (HttpClient client = new HttpClient())
-    {
-        var response = await client.GetStringAsync(searchUrl);
-        var jsonData = JObject.Parse(response);
-        string imageUrl = (string)jsonData["items"]?[0]?["link"];
-        return imageUrl;
-    }
-}
-
+    //     using (HttpClient client = new HttpClient())
+    //     {
+    //         var response = await client.GetStringAsync(searchUrl);
+    //         var jsonData = JObject.Parse(response);
+    //         string imageUrl = (string)jsonData["items"]?[0]?["link"];
+    //         return imageUrl;
+    //     }
+    // }
 
     [HttpPost]
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
@@ -110,6 +111,7 @@ public class HomeController : Controller
         ViewBag.RespuestaCorrecta = respuestaCorrecta;
         return View("Respuesta");
     }
+
     public IActionResult ConfigurarNombre()
     {
         return View();
@@ -147,8 +149,64 @@ public class HomeController : Controller
         string username = TempData["Username"].ToString();
         int dificultad = (int)TempData["Dificultad"];
         
-        // Guardar la configuración del juego y comenzar
         return RedirectToAction("Comenzar", new { username, dificultad, categoria });
     }
+
+    public IActionResult AuthCallback(string code)
+    {
+        if (string.IsNullOrEmpty(code))
+        {
+            return RedirectToAction("Error", "Home");
+        }
+
+        return RedirectToAction("EditDocument", new { documentId = "1VwX7KTJBkgIydwd0uBgDNEyPlXtLHaxD_tQ43JPku4g" });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditDocument(string documentId, string contentToUpdate)
+    {
+        var accessToken = HttpContext.Session.GetString("access_token");
+
+        if (string.IsNullOrEmpty(accessToken))
+        {
+            return RedirectToAction("Authenticate");
+        }
+
+        var credential = GoogleCredential.FromAccessToken(accessToken);
+        var service = new DocsService(new BaseClientService.Initializer()
+        {
+            HttpClientInitializer = credential,
+            ApplicationName = ApplicationName,
+        });
+
+        var requests = new List<Request>
+        {
+            new Request
+            {
+                InsertText = new InsertTextRequest
+                {
+                    Text = contentToUpdate,
+                    Location = new Location { Index = 1 }
+                }
+            }
+        };
+
+        var batchUpdateRequest = new BatchUpdateDocumentRequest { Requests = requests };
+        await service.Documents.BatchUpdate(batchUpdateRequest, documentId).ExecuteAsync();
+
+        ViewBag.Message = "El documento ha sido actualizado exitosamente.";
+        return View();
+    }
+
+    public IActionResult Authenticate()
+{
+    var clientId = "337829767280-57jr5bfe4iav582lnvhgpiklkd7ml7ah.apps.googleusercontent.com";
+    var redirectUri = "https://localhost:5194/Home/AuthCallback"; // URI de redirección después de la autenticación
+
+    var authorizationUrl = $"https://accounts.google.com/o/oauth2/auth?client_id={clientId}&redirect_uri={redirectUri}&response_type=code&scope=https://www.googleapis.com/auth/documents";
+
+    // Redirigir al usuario a Google para autenticación
+    return Redirect(authorizationUrl);
 }
 
+}
